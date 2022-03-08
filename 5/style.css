@@ -1,0 +1,35 @@
+html {
+    background-color: #333333;
+   
+}
+
+label {
+  margin-bottom:4px;
+  position: relative; 
+  padding-left:23px; 
+  cursor: pointer;
+}
+
+#form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 430px;
+    height: 100%;
+}
+
+.btn {
+    cursor: pointer;
+    background-color: #333333;
+}
+
+.btn::after {
+    border-color: transparent transparent #333333 #fff!important;
+}
+
+@media screen and (min-width: 426px) {
+    #form {
+        height: auto;
+        margin: 2em auto;
+    }
+}
