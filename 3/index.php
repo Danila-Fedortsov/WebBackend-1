@@ -2,7 +2,7 @@
 
 <html>
     <head>
-         <title>form</title>
+         <title>index</title>
          <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     
@@ -64,7 +64,7 @@
 <p><input type="checkbox" name="check" checked> С контрактом ознакомлен(-а).</p> 
 </div>
 
-<button>Отправить!</button>
+<submit>Отправить!</submit>
 </form>
 </div>
 
