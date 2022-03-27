@@ -167,10 +167,10 @@ label:hover span {
   background-color: #ccc;
 }
 
-label input:checked ~ span {
+label input:agree ~ span {
   background-color:  #333333;
 }
-label input:checked ~ span:after {
+label input:agree ~ span:after {
   display:block;
 }
 select {
