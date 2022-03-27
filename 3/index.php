@@ -63,35 +63,47 @@ if ($errors){
     exit();
 }
 
-// Сохранение в базу данных.
-$user = 'u20982'; // Логин от БД
-$pass = '3345940'; // Пароль от БД
-
-// Создаем класс подключения к БД
-$db = new PDO('mysql:host=localhost;dbname=u20982', $user, $pass, array(
-    PDO::ATTR_PERSISTENT => true
-));
-
-// Подготовленный запрос. Не именованные метки.
-try{
-    $stmt = $db->prepare("INSERT INTO table1 SET name = ?, email = ?, year = ?, gender = ?, count = ?, powers = ?, bio = ?");
-    $stmt->execute(array(
-        $_POST['name'],
-        $_POST['email'],
-        $_POST['year'],
-        $_POST['gender'],
-        $_POST['count'],
-        $powers,
-        $_POST['bio'],
-    ));
-}
-catch(PDOException $e){
-    // При возникновении ошибки отправления в БД, выводим информацию
-    print ('Ошибка: ' . $e->getMessage());
-    exit();
+$name = htmlspecialchars($_POST["name"]);
+$email = htmlspecialchars($_POST["email"]);
+$year = intval(htmlspecialchars($_POST["year"]));
+$gender = htmlspecialchars($_POST["gender"]);
+$limbs = intval(htmlspecialchars($_POST["numlimbs"]));
+$superPowers = $_POST["super-powers"];
+$biography = htmlspecialchars($_POST["biography"]);
+if (!isset($_POST["agree"])) {
+	$agree = 0;
+} else {
+	$agree = 1;
 }
 
-// Делаем перенаправление.
-// Если запись не сохраняется, но ошибок не видно, то можно закомментировать эту строку чтобы увидеть ошибку.
-// Если ошибок при этом не видно, то необходимо настроить параметр display_errors для PHP.
-header('Location: ?save=1');
+$serverName = 'localhost';
+$user = "u47660";
+$pass = "1741794";
+$dbName = $user;
+
+$db = new PDO("mysql:host=$serverName;dbname=$dbName", $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+
+$lastId = null;
+try {
+	$stmt = $db->prepare("INSERT INTO user (name, email, date, gender, limbs, biography, agreement) VALUES (:name, :email, :date, :gender, :limbs, :biography, :agreement)");
+	$stmt->execute(array('name' => $name, 'email' => $email, 'date' => $year, 'gender' => $gender, 'limbs' => $limbs, 'biography' => $biography, 'agreement' => $agree));
+	$lastId = $db->lastInsertId();
+} catch (PDOException $e) {
+	print('Error : ' . $e->getMessage());
+	exit();
+}
+
+try {
+	if ($lastId === null) {
+		exit();
+	}
+	foreach ($superPowers as $value) {
+		$stmt = $db->prepare("INSERT INTO user_power (id, power) VALUES (:id, :power)");
+		$stmt->execute(array('id' => $lastId, 'power' => $value));
+	}
+} catch (PDOException $e) {
+	print('Error : ' . $e->getMessage());
+	exit();
+}
+$db = null;
+echo "Данные отправлены!";
