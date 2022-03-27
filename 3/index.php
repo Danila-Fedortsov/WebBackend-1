@@ -50,10 +50,10 @@
                 </label>
                  
 <p>Сверхспособности:</p>
-<select id="form-select" multiple size="3" name="powers[]">
+<select multiple name="super-powers[]">
 <option value="immortality">Бессмертие</option>
+<option value="walkthrough-walls">Прохождение сквозь стены</option>
 <option value="levitation">Левитация</option>
-<option value="walls-walking">Хождение сквозь стены</option>
 </select>
      
 <p>Биография.</p>
