@@ -58,10 +58,10 @@
      
 <p>Биография.</p>
 
-<textarea name="bio" cols="30" rows="4" placeholder="Расскажите о себе"></textarea>
+<textarea name="biography" cols="30" rows="4" placeholder="Расскажите о себе"></textarea>
 
 <div class="checkbox">
-<p><input type="checkbox" name="check" checked> С контрактом ознакомлен(-а).</p> 
+<p><input type="checkbox" name="agree" checked> С контрактом ознакомлен(-а).</p> 
 </div>
 
 <submit>Отправить!</submit>
