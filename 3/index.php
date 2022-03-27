@@ -33,19 +33,19 @@
 
 <p>Количество конечностей</p>
 <label>
-   <input type="radio" name="count" checked value="1">
+   <input type="radio" name="numlimbs" checked value="1">
                     1
 </label>
                 <label>
-                    <input type="radio" name="count" value="2">
+                    <input type="radio" name="numlimbs" value="2">
                     2
                 </label>
                 <label>
-                    <input type="radio" name="count" value="3">
+                    <input type="radio" name="numlimbs" value="3">
                     3
                 </label>
                  <label>
-                    <input type="radio" name="count" value="4">
+                    <input type="radio" name="numlimbs" value="4">
                     4
                 </label>
                  
